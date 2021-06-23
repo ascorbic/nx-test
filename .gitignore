@@ -40,5 +40,6 @@ Thumbs.db
 
 .netlify
 _next
-apps/tuskdesk/netlify/functions/next_*
+netlify/functions/next_*
 out
+.dist

@@ -1,8 +1,9 @@
 [build]
 framework = "next"
 command = "npm run build"
-base="apps/tuskdesk"
-publish="out"
+base="."
+publish="apps/tuskdesk/out"
+
 
 [[plugins]]
 package="@netlify/plugin-nextjs"
