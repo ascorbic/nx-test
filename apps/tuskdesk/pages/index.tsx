@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import {useEffect, useState} from "react";
+import { useEffect, useState } from 'react';
 
 export function getStaticProps(context) {
   const data = [];
 
   return {
     props: { data }, // will be passed to the page component as props
-  }
+  };
 }
 
-export function Index({data}) {
+export function Index({ data }) {
   console.log(data);
   /*
    * Replace the elements below with your own.
@@ -19,7 +19,7 @@ export function Index({data}) {
    */
   return (
     <div>
-      <h2>Resources &amp; Tools</h2>
+      <h2>Resources &amp; Tools!</h2>
       <p>Thank you for using and showing some ♥ for Nx.</p>
       <div className="flex github-star-container">
         <a

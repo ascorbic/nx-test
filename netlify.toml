@@ -1,9 +1,145 @@
+[dev]
+targetPort = 4200
+
+[functions]
+
+  [functions.___netlify-handler]
+  included_files = [
+    "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/server/**",
+    "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/serverless/**",
+    "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/*.json",
+    "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/BUILD_ID"
+  ]
+
+  [functions.___netlify-odb-handler]
+  included_files = [
+    "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/server/**",
+    "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/serverless/**",
+    "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/*.json",
+    "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/BUILD_ID"
+  ]
+
 [build]
 framework = "next"
-command = "npm run build"
-base="."
-publish="apps/tuskdesk/out"
-
+base = "."
+publish = "dist/apps/tuskdesk/.next/"
 
 [[plugins]]
-package="@netlify/plugin-nextjs"
+package = "../../netlify-plugin-nextjs-experimental"
+
+[[redirects]]
+from = "/_next/image*"
+to = "/_ipx/w_:width,q_:quality/:url"
+status = 301
+
+  [redirects.query]
+  url = ":url"
+  w = ":width"
+  q = ":quality"
+
+[[redirects]]
+from = "/_ipx/*"
+to = "/.netlify/functions/_ipx"
+status = 200
+
+[[redirects]]
+from = "/_next/static/*"
+to = "/static/:splat"
+status = 200
+
+[[redirects]]
+from = "/*"
+to = "/.netlify/functions/___netlify-handler"
+status = 200
+
+[context]
+
+  [context.production]
+
+    [context.production.functions]
+
+      [context.production.functions.___netlify-handler]
+      included_files = [
+        "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/server/**",
+        "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/serverless/**",
+        "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/*.json",
+        "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/BUILD_ID"
+      ]
+
+      [context.production.functions.___netlify-odb-handler]
+      included_files = [
+        "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/server/**",
+        "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/serverless/**",
+        "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/*.json",
+        "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/BUILD_ID"
+      ]
+
+    [[context.production.redirects]]
+    from = "/_next/image*"
+    to = "/_ipx/w_:width,q_:quality/:url"
+    status = 301
+
+      [context.production.redirects.query]
+      url = ":url"
+      w = ":width"
+      q = ":quality"
+
+    [[context.production.redirects]]
+    from = "/_ipx/*"
+    to = "/.netlify/functions/_ipx"
+    status = 200
+
+    [[context.production.redirects]]
+    from = "/_next/static/*"
+    to = "/static/:splat"
+    status = 200
+
+    [[context.production.redirects]]
+    from = "/*"
+    to = "/.netlify/functions/___netlify-handler"
+    status = 200
+
+  [context.main]
+
+    [context.main.functions]
+
+      [context.main.functions.___netlify-handler]
+      included_files = [
+        "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/server/**",
+        "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/serverless/**",
+        "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/*.json",
+        "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/BUILD_ID"
+      ]
+
+      [context.main.functions.___netlify-odb-handler]
+      included_files = [
+        "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/server/**",
+        "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/serverless/**",
+        "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/*.json",
+        "/Users/matt/Repos/sandbox/nx-test/dist/apps/tuskdesk/.next/BUILD_ID"
+      ]
+
+    [[context.main.redirects]]
+    from = "/_next/image*"
+    to = "/_ipx/w_:width,q_:quality/:url"
+    status = 301
+
+      [context.main.redirects.query]
+      url = ":url"
+      w = ":width"
+      q = ":quality"
+
+    [[context.main.redirects]]
+    from = "/_ipx/*"
+    to = "/.netlify/functions/_ipx"
+    status = 200
+
+    [[context.main.redirects]]
+    from = "/_next/static/*"
+    to = "/static/:splat"
+    status = 200
+
+    [[context.main.redirects]]
+    from = "/*"
+    to = "/.netlify/functions/___netlify-handler"
+    status = 200
